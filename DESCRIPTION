@@ -1,0 +1,16 @@
+Package: SDNNtests
+Title: Shape-constrained stochastic dominance (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Nilanjana",
+           family = "Laha",
+           role = c("aut", "cre"),
+           email = "nlaha@hsph.harvard.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package performs nonparametric and shape-constrained test of one sided stochastic dominance against the null of non-dominance. It also gives shape-constrained estimator of the Hellinger distance. The shape-constraints used here are unimodality and log-concavity. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+	logcondens
+RoxygenNote: 7.1.0
