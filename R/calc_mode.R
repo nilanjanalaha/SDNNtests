@@ -104,11 +104,6 @@ calcab <- function(r,x,flag)
 #'          without smoothness assumptions}, Ann. Statist., 25, 970–981.
 #'@author \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}
 #' (maintainer), \email{nlaha@@hsph.harvard.edu},
-#'
-#' Zoe Moodie, \email{zoe@@fredhutch.org},
-#'
-#' Y Huang, \email{yhuang@@fredhutch.org},
-#'
 #' Alex Luedtke, \email{aluedtke@@uw.edu}.
 #' @examples
 #' x <- sort(rnorm(100)); calc_mode(x, 1)

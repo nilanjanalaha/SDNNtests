@@ -19,7 +19,8 @@ corresponds to the second sample.}
 See Details.}
 
 \item{p}{The proportion of combined data to be trimmed from each end prior to testing,
-should take value in \eqn{[0,0.50)}, the default is set to 0.05.}
+should take value in \eqn{[0,0.50)},
+the default is set to 0.05.}
 }
 \value{
 A list of two numbers.
@@ -34,7 +35,7 @@ Calculates the p-values of one-sided
 tests of restricted stochastic dominance against the null of non-dominance.
 The concerned tests are the minimum t-statistic test
 and the two sample empirical process (TSEP)
-test of  \emph{Laha et al., 2020}. Each test can be either nonparametric,
+test of  \emph{Laha et al. (2020)}. Each test can be either nonparametric,
 or semiparametric, ie.  using unimodality or log-concavity assumption on the underlying
 densities.
 }
@@ -53,8 +54,8 @@ function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The f
              to tests which use the function \code{\link{calc_mode}}
              to estimate the densities of \eqn{X_i}'s and \eqn{Y_i}'s. This function
              estimates the unimodal density estimator of Birge (1997).
-              "LC" corresponds to tests which use  the log-concave MLE of Dumbgen and Rufibatch (2009)
-              to estimate the latter densities. For more detail, see Laha et al., 2020.
+              "LC" corresponds to tests which use  the log-concave MLE (given by \link[logcondens]{logConDens} of R package ``logcondens")
+              of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2020).
 
 \code{t}:   The parameter \eqn{t}
                 corresponds to the parameter \eqn{\tau}
@@ -62,7 +63,7 @@ function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The f
                  estimation of the unimodal densities.  This value ontrols the accuracy in
            unimodal density estimation upto the term \eqn{(m+n)^{-t}}. A value greater
              than or equal to one is recommended.  See Birge (1997)
-           for more information.
+           for more details.
 
 \code{p}:   p corresponds to the set \eqn{D_{p,m,n}} in \eqn{H_0} and \eqn{H_1}.
            To overcome the difficulties arising from the tail region,
@@ -74,7 +75,7 @@ x <- rnorm(100); y <- rgamma(50, shape=1);
  SDNN(x, y, Method="UM", t=1, p=0.01)
 }
 \references{
-Laha, N., Moodie, Z., Huang, Y., and Luedtke, A.
+Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
 \emph{ Improved inference for vaccine-induced immune responses
        via shape-constrained methods}. Submitted.
 
@@ -86,15 +87,10 @@ Birge, L. (1997). \emph{Estimation of unimodal densities
          without smoothness assumptions}, Ann. Statist., 25, 970–981.
 }
 \seealso{
-\code{\link{calc_mode}}
+\code{\link{calc_mode}}, \link[logcondens]{logConDens}
 }
 \author{
 \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}
 (maintainer), \email{nlaha@hsph.harvard.edu},
-
-Zoe Moodie, \email{zoe@fredhutch.org},
-
-Y Huang, \email{yhuang@fredhutch.org},
-
 Alex Luedtke, \email{aluedtke@uw.edu}.
 }

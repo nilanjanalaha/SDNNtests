@@ -54,10 +54,5 @@ Birge, L. (1997). \emph{Estimation of unimodal densities
 \author{
 \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}
 (maintainer), \email{nlaha@hsph.harvard.edu},
-
-Zoe Moodie, \email{zoe@fredhutch.org},
-
-Y Huang, \email{yhuang@fredhutch.org},
-
 Alex Luedtke, \email{aluedtke@uw.edu}.
 }

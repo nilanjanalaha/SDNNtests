@@ -2,3 +2,6 @@
 
 export(SDNN)
 export(calc_mode)
+export(hd.lc)
+export(hd.lc.sm)
+export(hd.uni)

@@ -142,7 +142,7 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #' tests of restricted stochastic dominance against the null of non-dominance.
 #' The concerned tests are the minimum t-statistic test
 #' and the two sample empirical process (TSEP)
-#' test of  \emph{Laha et al., 2020}. Each test can be either nonparametric,
+#' test of  \emph{Laha et al. (2020)}. Each test can be either nonparametric,
 #' or semiparametric, ie.  using unimodality or log-concavity assumption on the underlying
 #' densities.
 #'
@@ -161,15 +161,15 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #'              to tests which use the function \code{\link{calc_mode}}
 #'              to estimate the densities of \eqn{X_i}'s and \eqn{Y_i}'s. This function
 #'              estimates the unimodal density estimator of Birge (1997).
-#'               "LC" corresponds to tests which use  the log-concave MLE of Dumbgen and Rufibatch (2009)
-#'               to estimate the latter densities. For more detail, see Laha et al., 2020.
+#'               "LC" corresponds to tests which use  the log-concave MLE (given by \link[logcondens]{logConDens} of R package ``logcondens")
+#'               of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2020).
 #' @details  \code{t}:   The parameter \eqn{t}
 #'                 corresponds to the parameter \eqn{\tau}
 #'                 in Birge (1997). Higher values of \eqn{t} leads to more accurate
 #'                  estimation of the unimodal densities.  This value ontrols the accuracy in
 #'            unimodal density estimation upto the term \eqn{(m+n)^{-t}}. A value greater
 #'              than or equal to one is recommended.  See Birge (1997)
-#'            for more information.
+#'            for more details.
 #' @details \code{p}:   p corresponds to the set \eqn{D_{p,m,n}} in \eqn{H_0} and \eqn{H_1}.
 #'            To overcome the difficulties arising from the tail region,
 #'           \eqn{100p} percent of data is trimmed from both sides of the
@@ -183,7 +183,8 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #' @param t  A positive real number. Only required when Method={"UM"}, default value is 1.
 #'           See Details.
 #' @param p The proportion of combined data to be trimmed from each end prior to testing,
-#'           should take value in \eqn{[0,0.50)}, the default is set to 0.05.
+#'           should take value in \eqn{[0,0.50)},
+#'           the default is set to 0.05.
 #'
 #'@return  A list of two numbers.
 #'\itemize{
@@ -191,7 +192,7 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #'            Laha \emph{et al.}, (2020)
 #'\item T2 - The p-value of the TSEP test of Laha \emph{et al.}, (2020).
 #' }
-#'@references Laha, N., Moodie, Z., Huang, Y., and Luedtke, A.
+#'@references Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
 #' \emph{ Improved inference for vaccine-induced immune responses
 #'        via shape-constrained methods}. Submitted.
 #'@references Dumbgen, L. and Rufibatch, K. (2009). \emph{Maximum likelihood estimation of a logconcave density and
@@ -201,13 +202,8 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #'          without smoothness assumptions}, Ann. Statist., 25, 970–981.
 #'@author \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}
 #' (maintainer), \email{nlaha@@hsph.harvard.edu},
-#'
-#' Zoe Moodie, \email{zoe@@fredhutch.org},
-#'
-#' Y Huang, \email{yhuang@@fredhutch.org},
-#'
 #' Alex Luedtke, \email{aluedtke@@uw.edu}.
-#' @seealso \code{\link{calc_mode}}
+#' @seealso \code{\link{calc_mode}}, \link[logcondens]{logConDens}
 #' @examples
 #' x <- rnorm(100); y <- rgamma(50, shape=1);
 #'  SDNN(x, y, Method="UM", t=1, p=0.01)
