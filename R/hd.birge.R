@@ -32,7 +32,8 @@ Hell <- function(f1, f2, low, up)
 #'           corresponds to the first sample.
 #' @param  y Vector of n independent and identically distributed random variables;
 #'           corresponds to the second sample.
-#'
+#' @param alpha A number between 0 and 0.50. The function returns an
+#'              (1-alpha)\eqn{\%} confidence interval.
 #'
 #'@return  A vector of three elements. The first element is the point estimate
 #'         of the Hellinger distance. The second and the third elements give the
@@ -50,9 +51,9 @@ Hell <- function(f1, f2, low, up)
 #' @seealso \code{\link{calc_mode}}, \code{\link{hd.lc}}, \code{\link{hd.lc.sm}}
 #' @examples
 #' x <- sort(rnorm(100)); y <- sort(rgamma(50, shape=1));
-#' hd.uni(x,y)
+#' hd.uni(x, y, 0.05)
 #' @export
-hd.uni <- function(x,y)
+hd.uni <- function(x,y, alpha)
 {
   x <- sort(x)
   y <- sort(y)
@@ -84,13 +85,13 @@ hd.uni <- function(x,y)
 
   }
   H <- 1-s # the hellinger distance
-  ci <- ci.birge(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H)
+  ci <- ci.birge(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H, alpha)
   c(H,ci)
 }
 
 ################## gives the the confidence interval for Birge's estimator #####################
 
-ci.birge <- function(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H)
+ci.birge <- function(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H, alpha)
 {
   scf <- 0
   scg <- 0
@@ -104,7 +105,7 @@ ci.birge <- function(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H)
 
   l <- length(f1x)/N
   var <- scf/l+scg/(1-l)
-  sd <- sqrt(var/N)*1.959964
+  sd <- -sqrt(var/N)*qnorm(alpha/2)
   sm.ci <- c(H-sd,H+sd) #ci constructed using f-hat to smooth out
   sm.ci
 }

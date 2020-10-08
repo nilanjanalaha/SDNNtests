@@ -4,7 +4,7 @@
 \alias{hd.uni}
 \title{Hellinger distance between unimodal densities}
 \usage{
-hd.uni(x, y)
+hd.uni(x, y, alpha)
 }
 \arguments{
 \item{x}{Vector of m independent and identically distributed random variables;
@@ -12,6 +12,9 @@ corresponds to the first sample.}
 
 \item{y}{Vector of n independent and identically distributed random variables;
 corresponds to the second sample.}
+
+\item{alpha}{A number between 0 and 0.50. The function returns an
+(1-alpha)\eqn{\%} confidence interval.}
 }
 \value{
 A vector of three elements. The first element is the point estimate
@@ -30,7 +33,7 @@ This function calls \code{link{calc_mode}} where the parameter
 }
 \examples{
 x <- sort(rnorm(100)); y <- sort(rgamma(50, shape=1));
-hd.uni(x,y)
+hd.uni(x, y, 0.05)
 }
 \references{
 Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
