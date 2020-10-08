@@ -13,7 +13,7 @@ corresponds to the first sample.}
 \item{y}{Vector of n independent and identically distributed random variables;
 corresponds to the second sample.}
 
-\item{alpha}{A number between 0 and 0.50. The function returns an
+\item{alpha}{A positive number between 0 and 0.50. The function returns an
 (1-alpha)\eqn{\%} confidence interval.}
 }
 \value{

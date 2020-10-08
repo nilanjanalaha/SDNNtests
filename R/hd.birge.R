@@ -32,7 +32,7 @@ Hell <- function(f1, f2, low, up)
 #'           corresponds to the first sample.
 #' @param  y Vector of n independent and identically distributed random variables;
 #'           corresponds to the second sample.
-#' @param alpha A number between 0 and 0.50. The function returns an
+#' @param alpha A positive number between 0 and 0.50. The function returns an
 #'              (1-alpha)\eqn{\%} confidence interval.
 #'
 #'@return  A vector of three elements. The first element is the point estimate
@@ -106,6 +106,7 @@ ci.birge <- function(f1x,f1y,f2x,f2y,v1,v2,pool,m,N,H, alpha)
   l <- length(f1x)/N
   var <- scf/l+scg/(1-l)
   sd <- -sqrt(var/N)*qnorm(alpha/2)
+
   sm.ci <- c(H-sd,H+sd) #ci constructed using f-hat to smooth out
   sm.ci
 }
