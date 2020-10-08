@@ -4,6 +4,7 @@
 # The R function for the shape-constrained tests: SDNN
 # Estimator of Hellinger distance: hd.uni (unimodal density, also gives a  confidence interval),
 # hd.lc (log-concave density), hd.lc.sm (smoothed log-concave density).
+# See the manual SDNNtests_0.0.0.9000.pdf for more details.
 
 #To install the package SDNNtests type in your R console the following:
 library(devtools)
