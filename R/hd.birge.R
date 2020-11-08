@@ -33,7 +33,7 @@ Hell <- function(f1, f2, low, up)
 #' @param  y Vector of n independent and identically distributed random variables;
 #'           corresponds to the second sample.
 #' @param alpha A positive number between 0 and 0.50. The function returns an
-#'              (1-alpha)\eqn{\%} confidence interval.
+#'              (1-alpha)\eqn{\%} confidence interval. The default value is 0.05.
 #'
 #'@return  A vector of three elements. The first element is the point estimate
 #'         of the Hellinger distance. The second and the third elements give the
@@ -53,7 +53,7 @@ Hell <- function(f1, f2, low, up)
 #' x <- sort(rnorm(100)); y <- sort(rgamma(50, shape=1));
 #' hd.uni(x, y, 0.05)
 #' @export
-hd.uni <- function(x,y, alpha)
+hd.uni <- function(x,y, alpha=0.05)
 {
   x <- sort(x)
   y <- sort(y)

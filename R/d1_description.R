@@ -1,0 +1,29 @@
+#' Artificial data resembling the aggregated IgG binding immune
+#' response data from HVTN 097 (Laha et al (2020)).
+#'
+#' The aggregated IgG binding immune response from the HVTN 097 trial has a roughly
+#' symmetric histogram (see Laha et al., 2020). Therefore, we use normal distribution to generate an
+#' artificial dataset  resembling this variable. This dataset  has only
+#' one variable t1, so it is actually an array.
+#' t1 is sampled from  normal distribution with mean 7.41623 and standard deviation (SD) 1.716793,
+#' which are the mean and the standard deviation (SD)
+#' of the aggregated IgG binding immune response from HVTN 097 trial, respectively. The
+#' size of t1 is 68, which is same as that of the  IgG binding immune response  from HVTN 097 trial.
+#'
+#'
+#' @docType data
+#'
+#' @usage SDNNtests::t1
+#'
+#' @format An object of class \code{"numeric"}.
+#'
+#' @keywords datasets
+#'
+#' @references Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
+#' \emph{ Improved inference for vaccine-induced immune responses
+#'        via shape-constrained methods}. Submitted.
+#'
+#' @examples
+#' t1
+#' hist(t1); boxplot(t1)
+"t1"

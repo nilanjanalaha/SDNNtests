@@ -9,5 +9,11 @@ Encoding: UTF-8
 LazyData: true
 Imports:
 	logcondens,
-        pracma 
+        pracma,
+       lattice,
+       gridExtra,
+      ggpubr,
+       grid,
+     ggplot2,
+     ks
 RoxygenNote: 7.1.0

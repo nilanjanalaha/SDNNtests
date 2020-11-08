@@ -4,7 +4,7 @@
 \alias{hd.uni}
 \title{Hellinger distance between unimodal densities}
 \usage{
-hd.uni(x, y, alpha)
+hd.uni(x, y, alpha = 0.05)
 }
 \arguments{
 \item{x}{Vector of m independent and identically distributed random variables;
@@ -14,7 +14,7 @@ corresponds to the first sample.}
 corresponds to the second sample.}
 
 \item{alpha}{A positive number between 0 and 0.50. The function returns an
-(1-alpha)\eqn{\%} confidence interval.}
+(1-alpha)\eqn{\%} confidence interval. The default value is 0.05.}
 }
 \value{
 A vector of three elements. The first element is the point estimate

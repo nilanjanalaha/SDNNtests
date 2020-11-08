@@ -4,7 +4,7 @@
 \alias{SDNN}
 \title{One-sided test of  stochastic dominance against the null of non-dominance}
 \usage{
-SDNN(x, y, Method, t, p)
+SDNN(x, y, Method, t = 1, p1 = 0.05, p2 = 0.05)
 }
 \arguments{
 \item{x}{Vector of m independent and identically distributed random variables;
@@ -18,7 +18,11 @@ corresponds to the second sample.}
 \item{t}{A positive real number. Only required when Method={"UM"}, default value is 1.
 See Details.}
 
-\item{p}{The proportion of combined data to be trimmed from each end prior to testing,
+\item{p1}{The proportion of combined data to be trimmed from the left prior to testing,
+should take value in \eqn{[0,0.50)},
+the default is set to 0.05.}
+
+\item{p2}{The proportion of combined data to be trimmed from the right prior to testing,
 should take value in \eqn{[0,0.50)},
 the default is set to 0.05.}
 }
@@ -72,7 +76,7 @@ function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The f
 }
 \examples{
 x <- rnorm(100); y <- rgamma(50, shape=1);
- SDNN(x, y, Method="UM", t=1, p=0.01)
+ SDNN(x, y, Method="UM", t=1, p1=0.01, p2=0.05)
 }
 \references{
 Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).

@@ -3,14 +3,14 @@
 
 #################### gives the asymptotic test statistics for log-concave tests based on distance #######
 
-logcon_a<- function(x,y, pr)
+logcon_a<- function(x,y, pr1, pr2)
 {
 
   m <- length(x)
   n <- length(y)
   N <- m+n
-  a <- ceiling(pr*N) #Truncation
-  b <- ceiling((1-pr)*N) #Truncation
+  a <- ceiling(pr1*N) #Truncation
+  b <- ceiling((1-pr2)*N) #Truncation
   pool1 <- sort(c(x,y))
 
   mlef1 <- logcondens::logConDens(x,smoothed = FALSE)
@@ -38,9 +38,9 @@ logcon_a<- function(x,y, pr)
   t1 <- min(t1)
 
 
-  z <- seq(pr,1-pr,0.05)
+  z <- seq(pr1,1-pr2,0.05)
   z1 <- c(1:N)/N
-  z1 <- z1[z1>pr & z1 < 1-pr]
+  z1 <- z1[z1>pr1 & z1 < 1-pr2]
   z <- sort(unique(c(z,z1)))
 
   #Calculating T4
@@ -57,7 +57,7 @@ logcon_a<- function(x,y, pr)
 }
 
 ############# gives statistic of the unimodal tests based on the difference #######
-unimod_a <- function(x,y,p, pr)
+unimod_a <- function(x,y,p, pr1, pr2)
 {
 
 
@@ -65,8 +65,8 @@ unimod_a <- function(x,y,p, pr)
   n <- length(y)
   N <- m+n
   eta <- 1/N^p
-  a <- ceiling(pr*N) #truncation
-  b <- ceiling((1-pr)*N) #truncation
+  a <- ceiling(pr1*N) #truncation
+  b <- ceiling((1-pr2)*N) #truncation
 
   s1 <- calc_mode(sort(x),eta)
   s2 <- calc_mode(sort(y),eta)
@@ -79,7 +79,7 @@ unimod_a <- function(x,y,p, pr)
   tmp1 <- (F2-F1)/sqrt(F2*(1-F2)/n+F1*(1-F1)/m)
   t1 <- min(tmp1)
 
-  z <- seq(pr,1-pr,0.05)
+  z <- seq(pr1,1-pr2,0.05)
   z1 <- c(1:N)/N
   z1 <- z1[a:b]
   z <- sort(unique(c(z,z1)))
@@ -94,14 +94,14 @@ unimod_a <- function(x,y,p, pr)
 }
 
 ############# gives statistic of the nonparametric tests based on the difference #######
-nonparam_a <- function(x,y, pr)
+nonparam_a <- function(x,y, pr1, pr2)
 {
 
   m <- length(x)
   n <- length(y)
   N <- m+n
-  a <- ceiling(pr*N) #truncation
-  b <- ceiling((1-pr)*N) #truncation
+  a <- ceiling(pr1*N) #truncation
+  b <- ceiling((1-pr2)*N) #truncation
   pool <- sort(c(x,y))
 
 
@@ -111,7 +111,7 @@ nonparam_a <- function(x,y, pr)
   t1 <- min(tmp1[a:b])
 
 
-  z <- seq(pr, 1-pr, 0.01)
+  z <- seq(pr1, 1-pr2, 0.01)
   z1 <- c(1:N)/N
   z1 <- z1[a:b]
   z <- sort(unique(c(z,z1)))
@@ -127,11 +127,11 @@ nonparam_a <- function(x,y, pr)
 
 ############## combining the two shape constrained tests ###################################
 
-boot_test_a <- function(y1,y2, p, pr,Method)
+boot_test_a <- function(y1,y2, p, pr1, pr2, Method)
 {
-  if(Method=="NP") temp <- nonparam_a(y1, y2, pr)
-  if(Method=="UM") temp <- unimod_a(y1, y2, p, pr)
-  if(Method=="LC") temp <- logcon_a(y1, y2, pr)
+  if(Method=="NP") temp <- nonparam_a(y1, y2, pr1, pr2)
+  if(Method=="UM") temp <- unimod_a(y1, y2, p, pr1, pr2)
+  if(Method=="LC") temp <- logcon_a(y1, y2, pr1, pr2)
   temp
 }
 
@@ -182,10 +182,12 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #' @param Method Must be one among "NP" (nonparametric), "UM" (unimodal), and "LC" (log-concave). See 'Details'.
 #' @param t  A positive real number. Only required when Method={"UM"}, default value is 1.
 #'           See Details.
-#' @param p The proportion of combined data to be trimmed from each end prior to testing,
+#' @param p1 The proportion of combined data to be trimmed from the left prior to testing,
 #'           should take value in \eqn{[0,0.50)},
 #'           the default is set to 0.05.
-#'
+#' @param p2 The proportion of combined data to be trimmed from the right prior to testing,
+#'           should take value in \eqn{[0,0.50)},
+#'           the default is set to 0.05.
 #'@return  A list of two numbers.
 #'\itemize{
 #'\item T1 - The p-value of the test based on minimum T-statistic of
@@ -206,17 +208,18 @@ boot_test_a <- function(y1,y2, p, pr,Method)
 #' @seealso \code{\link{calc_mode}}, \link[logcondens]{logConDens}
 #' @examples
 #' x <- rnorm(100); y <- rgamma(50, shape=1);
-#'  SDNN(x, y, Method="UM", t=1, p=0.01)
+#'  SDNN(x, y, Method="UM", t=1, p1=0.01, p2=0.05)
 #' @export
-SDNN <- function(x, y, Method,  t, p)
+SDNN <- function(x, y, Method,  t=1, p1=0.05, p2=0.05)
 {
   #setting default values of pr and p
-  if(missing(p)) p <- 0.05
+  if(missing(p1)) p1 <- 0.05
+  if(missing(p1)) p2 <- 0.05
   if(missing(t)) t <- 1
 
   x <- sort(x)
   y <- sort(y)
-  test_stat <- boot_test_a(x, y, t, p,Method)
+  test_stat <- boot_test_a(x, y, t, p1, p2, Method)
   #Calculating the p-value
   pval <- 1-pnorm(test_stat)
   list(T1=pval[1],T2=pval[2])
