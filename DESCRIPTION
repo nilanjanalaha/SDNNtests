@@ -10,10 +10,5 @@ LazyData: true
 Imports:
 	logcondens,
         pracma,
-       lattice,
-       gridExtra,
-      ggpubr,
-       grid,
-     ggplot2,
-     ks
+         ks
 RoxygenNote: 7.1.0
