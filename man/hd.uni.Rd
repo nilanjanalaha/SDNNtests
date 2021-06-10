@@ -4,7 +4,7 @@
 \alias{hd.uni}
 \title{Hellinger distance between unimodal densities}
 \usage{
-hd.uni(x, y, alpha = 0.05)
+hd.uni(x, y)
 }
 \arguments{
 \item{x}{Vector of m independent and identically distributed random variables;
@@ -12,20 +12,17 @@ corresponds to the first sample.}
 
 \item{y}{Vector of n independent and identically distributed random variables;
 corresponds to the second sample.}
-
-\item{alpha}{A positive number between 0 and 0.50. The function returns an
-(1-alpha)\eqn{\%} confidence interval. The default value is 0.05.}
 }
 \value{
-A vector of three elements. The first element is the point estimate
-        of the Hellinger distance. The second and the third elements give the
-         left and right endpoints of the confidence interval.
+An estimate of the Hellinger distance between the densities of x and y.
 }
 \description{
-Provides an estimate and a confidence interval for
-the hellinger distance between two unimodal densities.
+Provides an estimate of
+the squared hellinger distance between the densities underlying the (two) observed
+samples. This estimator assumes that both underlying densities are unimodal.
+.
 This function uses the density estimator of Birges (1997), given by
-\code{\link{calc_mode}}. See Laha et al. (2020) for more details.
+\code{\link{calc_mode}}. See Laha et al. (2021) for more details.
 }
 \details{
 This function calls \code{link{calc_mode}} where the parameter
@@ -33,10 +30,10 @@ This function calls \code{link{calc_mode}} where the parameter
 }
 \examples{
 x <- sort(rnorm(100)); y <- sort(rgamma(50, shape=1));
-hd.uni(x, y, 0.05)
+hd.uni(x,y)
 }
 \references{
-Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
+Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2021).
 \emph{ Improved inference for vaccine-induced immune responses
        via shape-constrained methods}. Submitted.
 
@@ -44,7 +41,7 @@ Birge, L. (1997). \emph{Estimation of unimodal densities
          without smoothness assumptions}, Ann. Statist., 25, 970–981.
 }
 \seealso{
-\code{\link{calc_mode}}, \code{\link{hd.lc}}, \code{\link{hd.lc.sm}}
+\code{\link{calc_mode}}, \code{\link{hd.lc}}, \code{\link{hd.lc.sm}}, \code{\link{hell.ci}}
 }
 \author{
 \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}

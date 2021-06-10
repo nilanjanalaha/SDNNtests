@@ -2,9 +2,8 @@
 
 export(SDNN)
 export(calc_mode)
-export(do_description)
 export(hd.lc)
 export(hd.lc.sm)
 export(hd.uni)
+export(hell.ci)
 export(plot_b)
-export(umd)

@@ -30,8 +30,8 @@ the default is set to 0.05.}
 A list of two numbers.
 \itemize{
 \item T1 - The p-value of the test based on minimum T-statistic of
-           Laha \emph{et al.}, (2020)
-\item T2 - The p-value of the TSEP test of Laha \emph{et al.}, (2020).
+           Laha \emph{et al.}, (2021)
+\item T2 - The p-value of the TSEP test of Laha \emph{et al.}, (2021).
 }
 }
 \description{
@@ -39,7 +39,7 @@ Calculates the p-values of one-sided
 tests of restricted stochastic dominance against the null of non-dominance.
 The concerned tests are the minimum t-statistic test
 and the two sample empirical process (TSEP)
-test of  \emph{Laha et al. (2020)}. Each test can be either nonparametric,
+test of  \emph{Laha et al. (2021)}. Each test can be either nonparametric,
 or semiparametric, ie.  using unimodality or log-concavity assumption on the underlying
 densities.
 }
@@ -51,7 +51,7 @@ variables with distribution \eqn{F} and \eqn{G}, respectively. Denote by
 function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The function SDNN tests
  \eqn{H_0: F(x)\geq G(x)} for some \eqn{x\in D_{p,m,n}} vs
  \eqn{H_1: F(x)<G(x)} for all \eqn{x\in D_{p,m,n}}.
- For more details, see Laha et al., 2020.
+ For more details, see Laha et al., 2021.
 
 \code{Method}:
             "NP" corresponds to the nonparametric tests. "UM" corresponds
@@ -59,7 +59,7 @@ function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The f
              to estimate the densities of \eqn{X_i}'s and \eqn{Y_i}'s. This function
              estimates the unimodal density estimator of Birge (1997).
               "LC" corresponds to tests which use  the log-concave MLE (given by \link[logcondens]{logConDens} of R package ``logcondens")
-              of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2020).
+              of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2021).
 
 \code{t}:   The parameter \eqn{t}
                 corresponds to the parameter \eqn{\tau}
@@ -79,7 +79,7 @@ x <- rnorm(100); y <- rgamma(50, shape=1);
  SDNN(x, y, Method="UM", t=1, p1=0.01, p2=0.05)
 }
 \references{
-Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
+Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2021).
 \emph{ Improved inference for vaccine-induced immune responses
        via shape-constrained methods}. Submitted.
 

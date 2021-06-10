@@ -142,7 +142,7 @@ boot_test_a <- function(y1,y2, p, pr1, pr2, Method)
 #' tests of restricted stochastic dominance against the null of non-dominance.
 #' The concerned tests are the minimum t-statistic test
 #' and the two sample empirical process (TSEP)
-#' test of  \emph{Laha et al. (2020)}. Each test can be either nonparametric,
+#' test of  \emph{Laha et al. (2021)}. Each test can be either nonparametric,
 #' or semiparametric, ie.  using unimodality or log-concavity assumption on the underlying
 #' densities.
 #'
@@ -154,7 +154,7 @@ boot_test_a <- function(y1,y2, p, pr1, pr2, Method)
 #' function of the combined sample \deqn{\{X_1,\ldots, x_m,Y_1,\ldots,Y_n\}.} The function SDNN tests
 #'  \eqn{H_0: F(x)\geq G(x)} for some \eqn{x\in D_{p,m,n}} vs
 #'  \eqn{H_1: F(x)<G(x)} for all \eqn{x\in D_{p,m,n}}.
-#'  For more details, see Laha et al., 2020.
+#'  For more details, see Laha et al., 2021.
 #'
 #' @details  \code{Method}:
 #'             "NP" corresponds to the nonparametric tests. "UM" corresponds
@@ -162,7 +162,7 @@ boot_test_a <- function(y1,y2, p, pr1, pr2, Method)
 #'              to estimate the densities of \eqn{X_i}'s and \eqn{Y_i}'s. This function
 #'              estimates the unimodal density estimator of Birge (1997).
 #'               "LC" corresponds to tests which use  the log-concave MLE (given by \link[logcondens]{logConDens} of R package ``logcondens")
-#'               of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2020).
+#'               of Dumbgen and Rufibatch (2009) to estimate the latter densities. For more detail, see Laha et al. (2021).
 #' @details  \code{t}:   The parameter \eqn{t}
 #'                 corresponds to the parameter \eqn{\tau}
 #'                 in Birge (1997). Higher values of \eqn{t} leads to more accurate
@@ -191,10 +191,10 @@ boot_test_a <- function(y1,y2, p, pr1, pr2, Method)
 #'@return  A list of two numbers.
 #'\itemize{
 #'\item T1 - The p-value of the test based on minimum T-statistic of
-#'            Laha \emph{et al.}, (2020)
-#'\item T2 - The p-value of the TSEP test of Laha \emph{et al.}, (2020).
+#'            Laha \emph{et al.}, (2021)
+#'\item T2 - The p-value of the TSEP test of Laha \emph{et al.}, (2021).
 #' }
-#'@references Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2020).
+#'@references Laha, N., Moodie, Z., Huang, Y., and Luedtke, A. (2021).
 #' \emph{ Improved inference for vaccine-induced immune responses
 #'        via shape-constrained methods}. Submitted.
 #'@references Dumbgen, L. and Rufibatch, K. (2009). \emph{Maximum likelihood estimation of a logconcave density and

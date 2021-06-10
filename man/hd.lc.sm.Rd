@@ -18,8 +18,8 @@ A point estimator of the Hellinger distance.
 }
 \description{
 Provides an estimate of
-the Hellinger distance between two log-concave densities.
-This function uses the smoothed log-concave density estimator of Dumbgen and Rufibatch (2009),
+the squared Hellinger distance between two log-concave densities.
+This function uses the smoothed log-concave density estimator of Chen and Samworth (2013),
 given by \link[logcondens]{logConDens} of logcondens package.
 }
 \examples{
@@ -27,16 +27,16 @@ x <- sort(rnorm(100)); y <- sort(rgamma(50, shape=1));
 hd.lc.sm(x,y)
 }
 \references{
-Laha, N., Moodie, Z., Huang, Y., and Luedtke (2020), A.
+Laha, N., Moodie, Z., Huang, Y., and Luedtke (2021), A.
 \emph{ Improved inference for vaccine-induced immune responses
        via shape-constrained methods}. Submitted.
 
-Dumbgen, L. and Rufibatch, K. (2009). \emph{Maximum likelihood estimation of a logconcave density and
-          its distribution function: Basic properties and uniform
-          consistency}, Bernoulli, 15, 40–68.
+Chen, Y. and Samworth, R. J. (2013). \emph{Smoothed
+          log-concave maximum likelihood estimation with applications},
+          Statistica Sinica, 23, 1303-1398.
 }
 \seealso{
-\code{\link{hd.lc}}, \code{\link{hd.uni}}
+\code{\link{hd.lc}}, \code{\link{hd.uni}}, \code{\link{hell.ci}}
 }
 \author{
 \href{https://connects.catalyst.harvard.edu/Profiles/display/Person/184207}{Nilanjana Laha}
